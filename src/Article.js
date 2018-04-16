@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-// import Article from "./Article.js";
+import CommentList from './CommentList.js'
 
 class Article extends Component {
     constructor(props) {
@@ -26,6 +26,10 @@ class Article extends Component {
                 <button onClick={this.toggleOpen}> { isOpen ? 'Open' : 'Close' } </button>
                 <div>
                     { isOpen ? null : <p>{article.text}</p>}
+                </div>
+
+                <div>
+                    <CommentList comments = {article.comments}/>
                 </div>
             </li>
         );
