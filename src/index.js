@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './ArticleList';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import {fixtures} from './fixtures.js'
+
+ReactDOM.render(<App articles={ fixtures }/>, document.getElementById('root'));
 registerServiceWorker();
