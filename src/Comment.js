@@ -1,14 +1,10 @@
-import React from 'react';
+import React, {Fragment} from 'react'
 
 function Comment({comment}) {
-    console.log(comment)
     return (
-        <div>
-            {/*<p>{comment.text}</p>*/}
-            <span>
-                {/*<b>by {comment.user}</b>*/}
-            </span>
-        </div>
+        <Fragment>
+            <p>{comment.text} <b>by {comment.user}</b></p>
+        </Fragment>
     )
 }
 

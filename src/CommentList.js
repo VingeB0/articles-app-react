@@ -3,21 +3,35 @@ import React, {Component} from 'react';
 import Comment from "./Comment.js";
 
 class CommentList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpen : true
-        };
-    }
+    state = {
+        isOpen: false
+    };
 
-    render() {
-        // const {comments} = this.props;
-        console.log(this.props);
-        {/*<Comment comment = {comment} />*/}
+    toggleOpen = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        })
+    };
+
+    getBody() {
+        if (!this.state.isOpen) return null;
+
+        const {comments} = this.props;
+        if (!comments || !comments.length) return <p>No comments yet</p>;
 
         return (
             <ul>
-                { this.props.comments.map((comment) => <li key = {comment.id}>{comment.id}</li>) }
+                {comments.map(comment => <li key = {comment.id}><Comment comment = {comment}/></li>)}
+            </ul>
+        )
+    }
+
+    render() {
+        return (
+            <ul>
+                <h1>123</h1>
+                <button onClick = {this.toggleOpen}>{this.state.isOpen ? 'hide comments' : 'show comments'}</button>
+                {this.getBody()}
             </ul>
         );
     }

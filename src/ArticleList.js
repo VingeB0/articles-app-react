@@ -13,11 +13,11 @@ class ArticleList extends Component {
     render() {
         const {articles} = this.state;
 
-        console.log(this.state.articles);
+        // console.log(this.state.articles);
         return (
             <article>
                 <ul>
-                    { articles.map((article) => <Article key = {article.id} article = {article} />) }
+                    { articles.map(article => <li key = {article.id}><Article article = {article}/></li>) }
                 </ul>
             </article>
         );
