@@ -3,6 +3,10 @@ import React, {Component} from 'react';
 import Comment from "./Comment.js";
 
 class CommentList extends Component {
+    static defaultProps = {
+        comments: []
+    };
+
     state = {
         isOpen: false
     };
@@ -17,7 +21,7 @@ class CommentList extends Component {
         if (!this.state.isOpen) return null;
 
         const {comments} = this.props;
-        if (!comments || !comments.length) return <p>No comments yet</p>;
+        if (!comments.length) return <p>No comments yet</p>;
 
         return (
             <ul>
@@ -27,6 +31,7 @@ class CommentList extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <ul>
                 <h1>123</h1>

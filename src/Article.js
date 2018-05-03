@@ -1,8 +1,16 @@
 import React, {Component, Fragment} from 'react';
-
+import PropTypes from 'prop-types';
 import CommentList from './CommentList.js'
 
 class Article extends Component {
+    static propTypes = {
+        article: PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired,
+            text: PropTypes.string
+        }).isRequired
+    };
+
     constructor(props) {
         super(props);
         this.state = {
