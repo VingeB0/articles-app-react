@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './ArticleList';
+import App from './components/ArticleList';
 import registerServiceWorker from './registerServiceWorker';
 
 import {fixtures} from './fixtures.js'
