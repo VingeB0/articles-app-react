@@ -15,11 +15,9 @@ class ArticleList extends Component {
 
         // console.log(this.state.articles);
         return (
-            <article>
-                <ul>
-                    { articles.map(article => <li key = {article.id}><Article article = {article}/></li>) }
-                </ul>
-            </article>
+            <ul>
+                { articles.map(article => <li key = {article.id}><Article article = {article}/></li>) }
+            </ul>
         );
     }
 }

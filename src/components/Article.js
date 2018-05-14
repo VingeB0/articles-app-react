@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
 import CommentList from './CommentList.js'
 
@@ -19,7 +20,7 @@ class Article extends Component {
         return (
             <section>
                 {article.text}
-                <CommentList comments = {article.comments}/>
+                <CommentList comments = {article.comments} ref = {this.setCommentRef}/>
             </section>
         )
     }
@@ -52,6 +53,11 @@ class Article extends Component {
         this.container = ref;
         console.log('___', ref)
         console.log('___', ref.clientTop)
+    };
+
+    setCommentRef = ref => {
+        console.log('___ref', ref)
+        console.log('___findNode', findDOMNode(ref))
     };
 
     componentDidMount(nextProps, nextState) {
