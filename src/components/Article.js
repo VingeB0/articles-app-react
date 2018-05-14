@@ -24,19 +24,40 @@ class Article extends Component {
         )
     }
 
+    componentWillReceiveProps(nextProps) {
+        console.log('___', 'updating', this.props.isOpen, nextProps.isOpen)
+    }
+
+    componentWillMount() {
+        console.log('___', 'mounting');
+    }
+
     render() {
         const {article, isOpen, toggleOpen} = this.props;
 
         return (
             <Fragment>
-                <h2>{article.title}</h2>
-                <button onClick={toggleOpen}> { isOpen ? 'Open' : 'Close' } </button>
-                <div>
-                    {this.getBody()}
+                <div ref={this.setContainerRef}>
+                    <h2>{article.title}</h2>
+                    <button onClick={toggleOpen}> { isOpen ? 'Open' : 'Close' } </button>
+                    <div>
+                        {this.getBody()}
+                    </div>
                 </div>
             </Fragment>
         );
     }
+
+    setContainerRef = ref => {
+        this.container = ref;
+        console.log('___', ref)
+        console.log('___', ref.clientTop)
+    };
+
+    componentDidMount(nextProps, nextState) {
+        console.log('___', 'mounted')
+    }
+
 }
 
 export default toggleOpen(Article);
