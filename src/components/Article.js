@@ -3,8 +3,6 @@ import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
 import CommentList from './CommentList.js'
 
-import toggleOpen from '../decorators/toggleOpen.js'
-
 class Article extends Component {
     static propTypes = {
         article: PropTypes.shape({
@@ -26,11 +24,11 @@ class Article extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('___', 'updating', this.props.isOpen, nextProps.isOpen)
+        // console.log('___', 'updating', this.props.isOpen, nextProps.isOpen)
     }
 
     componentWillMount() {
-        console.log('___', 'mounting');
+        // console.log('___', 'mounting');
     }
 
     render() {
@@ -51,19 +49,19 @@ class Article extends Component {
 
     setContainerRef = ref => {
         this.container = ref;
-        console.log('___', ref)
-        console.log('___', ref.clientTop)
+        // console.log('___', ref)
+        // console.log('___', ref.clientTop)
     };
 
     setCommentRef = ref => {
-        console.log('___ref', ref)
-        console.log('___findNode', findDOMNode(ref))
+        // console.log('___ref', ref)
+        // console.log('___findNode', findDOMNode(ref))
     };
 
     componentDidMount(nextProps, nextState) {
-        console.log('___', 'mounted')
+        // console.log('___', 'mounted')
     }
 
 }
 
-export default toggleOpen(Article);
+export default Article;
