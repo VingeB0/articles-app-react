@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ArticleList from "./ArticleList";
 import ArticleChart from "./ArticleChart";
 import UserForm from "./UserForm";
+import DataRange from "./DataRange";
 import {fixtures} from "../fixtures";
 
 import Select from 'react-select';
@@ -35,6 +36,7 @@ class App extends Component {
             <div>
                 <UserForm/>
                 <Select options={selectOptions} value={this.state.selectText} onChange={this.changeSelection} multi />
+                <DataRange/>
                 <ArticleList articles={ this.props.articles } openItemId={this.props.articles[0].id} />
                 <ArticleChart articles={ this.props.articles } />
             </div>
