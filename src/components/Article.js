@@ -1,9 +1,9 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component, Fragment, PureComponent} from 'react';
 import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
 import CommentList from './CommentList.js'
 
-class Article extends Component {
+class Article extends PureComponent {
     static propTypes = {
         article: PropTypes.shape({
             id: PropTypes.string.isRequired,
@@ -33,7 +33,17 @@ class Article extends Component {
         // console.log('___', 'mounting');
     }
 
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     // console.log('___nextProps:');
+    //     // console.log(nextProps.isOpen);
+    //     // console.log('---this.props.isOpen:');
+    //     // console.log(this.props.isOpen);
+    //     return nextProps.isOpen !== this.props.isOpen
+    // }
+
     render() {
+        console.log('sozdavo');
+
         const {article, isOpen, toggleOpen} = this.props;
 
         return (

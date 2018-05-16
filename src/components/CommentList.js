@@ -7,7 +7,7 @@ class CommentList extends Component {
     static propTypes = {
         comments: PropTypes.array,
         //from toggleOpen decorator
-        isOpen: PropTypes.string,
+        isOpen: PropTypes.bool,
         toggleOpen: PropTypes.func
     };
 
