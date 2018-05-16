@@ -2,6 +2,9 @@ import React, {Component, Fragment, PureComponent} from 'react';
 import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
 import CommentList from './CommentList.js'
+import './article.css'
+
+import {CSSTransitionGroup} from 'react-transition-group'
 
 class Article extends PureComponent {
     static propTypes = {
@@ -52,7 +55,15 @@ class Article extends PureComponent {
                     <h2>{article.title}</h2>
                     <button onClick={toggleOpen}> { isOpen ? 'Open' : 'Close' } </button>
                     <div>
-                        {this.getBody()}
+                        <CSSTransitionGroup
+                            transitionName="article"
+                            transitionEnterTimeout={500}
+                            transitionLeaveTimeout={300}
+                            transitionAppear={true}
+                            transitionAppearTimeout={500}
+                            component="div">
+                            {this.getBody()}
+                        </CSSTransitionGroup>
                     </div>
                 </div>
             </Fragment>

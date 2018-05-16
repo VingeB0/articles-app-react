@@ -35,7 +35,7 @@ class App extends Component {
             <div>
                 <UserForm/>
                 <Select options={selectOptions} value={this.state.selectText} onChange={this.changeSelection} multi />
-                <ArticleList articles={ this.props.articles } />
+                <ArticleList articles={ this.props.articles } openItemId={this.props.articles[0].id} />
                 <ArticleChart articles={ this.props.articles } />
             </div>
         );

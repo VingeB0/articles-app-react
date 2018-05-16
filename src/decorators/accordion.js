@@ -2,9 +2,12 @@ import React, {Component} from 'react';
 
 export default (Component) => class Accordion extends Component {
 
-    state = {
-        openItemId : null
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            openItemId : this.props.openItemId
+        }
+    }
 
     toggleOpenItem = (openItemId) => ev => {
         this.setState({

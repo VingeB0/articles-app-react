@@ -19,9 +19,9 @@ class CommentList extends Component {
         if (!comments.length) return <p>No comments yet</p>;
 
         return (
-            <ul>
+            <div>
                 {comments.map(comment => <li key = {comment.id}><Comment comment = {comment}/></li>)}
-            </ul>
+            </div>
         )
     }
 
