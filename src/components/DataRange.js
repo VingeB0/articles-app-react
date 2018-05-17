@@ -32,8 +32,8 @@ class DataRange extends Component {
 
     render() {
         const {from, to} = this.state;
-        console.log(from);
-        console.log(to);
+        // console.log(from);
+        // console.log(to);
 
         return (
             <div>
@@ -43,8 +43,8 @@ class DataRange extends Component {
                 />
                 <h2>
                     {!from && !to && 'Please select the first day.'}
-                    {from && !to && 'Please select the first day.'}
-                    {'from: ' + from + 'to: ' + to}
+                    {from && !to && 'Please select the last day.'}
+                    {from && to && `Selected from ${from.toLocaleDateString()} to ${to.toLocaleDateString()}.`}
                 </h2>
             </div>
         );
