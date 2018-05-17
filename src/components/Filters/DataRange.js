@@ -19,21 +19,8 @@ class DataRange extends Component {
         );
     };
 
-    // selectedRange = () => {
-    //     const {from, to} = this.state;
-    //
-    //         </p>
-    //     } else {
-    //         return <p>{from && !to && 'Please select the first day.'}</p>
-    //     } else {
-    //         return <p>{'from: ' + from + 'to: ' + to}</p>
-    //     }
-    // };
-
     render() {
         const {from, to} = this.state;
-        // console.log(from);
-        // console.log(to);
 
         return (
             <div>

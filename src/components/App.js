@@ -1,42 +1,20 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import ArticleList from "./ArticleList";
-import ArticleChart from "./ArticleChart";
-import UserForm from "./UserForm";
-import DataRange from "./DataRange";
-import {fixtures} from "../fixtures";
-
-import Select from 'react-select';
-import 'react-select/dist/react-select.css';
+import ArticleList from "./ArticleList.js";
+import ArticleChart from "./ArticleChart.js";
+import UserForm from "./UserForm.js";
+import Filters from './Filters'
 
 class App extends Component {
     static propTypes = {
 
     };
 
-    state = {
-      selectText: null
-    };
-
-    changeSelection = (selectText) => {
-        this.setState({
-            selectText
-        });
-    };
-
     render() {
-        const selectOptions = this.props.articles.map(article => ({
-            label: article.title,
-            value: article.id
-        }));
-
-        console.log(this.state.selectText)
-
         return (
             <div>
                 <UserForm/>
-                <Select options={selectOptions} value={this.state.selectText} onChange={this.changeSelection} multi />
-                <DataRange/>
+                <Filters articles={ this.props.articles }/>
                 <ArticleList articles={ this.props.articles } openItemId={this.props.articles[0].id} />
                 <ArticleChart articles={ this.props.articles } />
             </div>
