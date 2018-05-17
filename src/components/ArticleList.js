@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
-import Article from "./Article.js";
-import toggleOpen from '../decorators/toggleOpen.js'
+import Index from "./Article";
 import accordion from '../decorators/accordion.js'
 import PropTypes from "prop-types";
 
@@ -22,7 +21,7 @@ class ArticleList extends Component {
             <ul>
                 {
                     articles.map(article => <li key={article.id}>
-                        <Article
+                        <Index
                             article={article}
                             isOpen={article.id === this.props.openItemId}
                             toggleOpen={this.props.toggleOpenItem(article.id)}

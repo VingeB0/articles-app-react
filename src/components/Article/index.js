@@ -1,12 +1,12 @@
 import React, {Component, Fragment, PureComponent} from 'react';
 import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
-import CommentList from './CommentList.js'
-import './article.css'
+import CommentList from '../CommentList.js'
+import '../article.css'
 
 import {CSSTransitionGroup} from 'react-transition-group'
 
-class Article extends PureComponent {
+class Index extends PureComponent {
     static propTypes = {
         article: PropTypes.shape({
             id: PropTypes.string.isRequired,
@@ -87,4 +87,4 @@ class Article extends PureComponent {
 
 }
 
-export default Article;
+export default Index;
