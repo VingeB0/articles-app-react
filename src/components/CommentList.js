@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import toggleOpen from '../decorators/toggleOpen.js'
 import Comment from "./Comment.js";
 import PropTypes from "prop-types";
+import './style.css'
 
 class CommentList extends Component {
     static propTypes = {
@@ -38,7 +39,7 @@ class CommentList extends Component {
         });
     };
 
-    getStyle = (type) => (this.state[type].length >= limits[type].max || this.state[type].length <= limits[type].min) ? {border: '2px solid red'} : null;
+    getClassName = (type) => (this.state[type].length && this.state[type].length < limits[type].min) ? 'comment-error' : null;
 
     handleSubmit = (ev) => {
       ev.preventDefault();
@@ -63,8 +64,8 @@ class CommentList extends Component {
                         placeholder="User name"
                         value={this.state.user}
                         onChange={this.handleChange('user')}
-                        style={this.getStyle('user')}
-                        // required
+                        className={this.getClassName('user')}
+                        required
                     />
                     <br/>
                     <label htmlFor="comment_text">Text</label>
@@ -74,8 +75,8 @@ class CommentList extends Component {
                         placeholder="Text message"
                         value={this.state.text}
                         onChange={this.handleChange('text')}
-                        style={this.getStyle('text')}
-                        // required
+                        className={this.getClassName('text')}
+                        required
                     />
                     <br/>
                     <button>Add new comment</button>
