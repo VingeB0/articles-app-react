@@ -2,11 +2,14 @@ import React, {Component, Fragment, PureComponent} from 'react';
 import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
 import CommentList from '../CommentList.js'
-import '../article.css'
+import '../article.css';
+
+import {connect} from 'react-redux';
+import {deleteArticle} from '../../actions';
 
 import {CSSTransitionGroup} from 'react-transition-group'
 
-class Index extends PureComponent {
+class Article extends PureComponent {
     static propTypes = {
         article: PropTypes.shape({
             id: PropTypes.string.isRequired,
@@ -44,6 +47,12 @@ class Index extends PureComponent {
     //     return nextProps.isOpen !== this.props.isOpen
     // }
 
+    handleDelete = () => {
+        this.props.deleteArticle(this.props.article.id);
+        console.log(this.props.article.id)
+        console.log(deleteArticle(this.props.article.id))
+    };
+
     render() {
         // console.log('sozdavo');
 
@@ -54,6 +63,7 @@ class Index extends PureComponent {
                 <div ref={this.setContainerRef}>
                     <h2>{article.title}</h2>
                     <button onClick={toggleOpen}> { isOpen ? 'Open' : 'Close' } </button>
+                    <button onClick={this.handleDelete}>delete</button>
                     <div>
                         <CSSTransitionGroup
                             transitionName="article"
@@ -87,4 +97,4 @@ class Index extends PureComponent {
 
 }
 
-export default Index;
+export default connect(null, {deleteArticle})(Article);

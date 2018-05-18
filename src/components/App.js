@@ -5,6 +5,8 @@ import ArticleChart from "./ArticleChart.js";
 import UserForm from "./UserForm.js";
 import Filters from './Filters'
 
+import Counter from './Counter.js'
+
 class App extends Component {
     static propTypes = {
 
@@ -13,10 +15,12 @@ class App extends Component {
     render() {
         return (
             <div>
+                <Counter/>
                 <UserForm/>
-                <Filters articles={ this.props.articles }/>
-                <ArticleList articles={ this.props.articles } openItemId={this.props.articles[0].id} />
-                <ArticleChart articles={ this.props.articles } />
+                <Filters articles={[]}/>
+                <ArticleList/>
+                {/*<ArticleList openItemId={this.props.articles[0].id} />*/}
+                {/*<ArticleChart articles={ this.props.articles } />*/}
             </div>
         );
     }

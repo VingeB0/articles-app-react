@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 
-import Index from "./Article";
+import Article from "./Article";
 import accordion from '../decorators/accordion.js'
 import PropTypes from "prop-types";
+
+import {connect} from 'react-redux'
 
 class ArticleList extends Component {
     static propTypes = {
@@ -21,7 +23,7 @@ class ArticleList extends Component {
             <ul>
                 {
                     articles.map(article => <li key={article.id}>
-                        <Index
+                        <Article
                             article={article}
                             isOpen={article.id === this.props.openItemId}
                             toggleOpen={this.props.toggleOpenItem(article.id)}
@@ -33,4 +35,6 @@ class ArticleList extends Component {
     }
 }
 
-export default accordion(ArticleList);
+export default connect(state => ({
+    articles: state.articles
+}))(accordion(ArticleList));
