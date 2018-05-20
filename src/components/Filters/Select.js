@@ -2,20 +2,17 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+import {connect} from 'react-redux';
+import {changeSelection} from '../../actions';
 
 class SelectFilter extends Component {
     static propTypes = {
         articles: PropTypes.array
     };
 
-    state = {
-        selectText: null
-    };
-
-    changeSelection = (selectText) => {
-        this.setState({
-            selectText
-        });
+    handleChange = (selected) => {
+        this.props.changeSelection(selected)
+        console.log(selected)
     };
 
     render() {
@@ -26,10 +23,18 @@ class SelectFilter extends Component {
 
         return (
             <div>
-                <Select options={selectOptions} value={this.state.selectText} onChange={this.changeSelection} multi />
+                <Select
+                    options={selectOptions}
+                    value={this.props.selected}
+                    onChange={this.handleChange}
+                    multi
+                />
             </div>
         );
     }
 }
 
-export default SelectFilter;
+export default connect(state => ({
+    articles: state.articles,
+    selected: state.filters.selected
+}), {changeSelection})(SelectFilter)

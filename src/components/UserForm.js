@@ -14,7 +14,7 @@ class UserForm extends Component {
     };
 
     render() {
-        console.log(this.state.inputValue);
+        // console.log(this.state.inputValue);
 
         return (
             <div>

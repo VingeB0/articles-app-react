@@ -17,7 +17,7 @@ class App extends Component {
             <div>
                 <Counter/>
                 <UserForm/>
-                <Filters articles={[]}/>
+                <Filters/>
                 <ArticleList/>
                 {/*<ArticleList openItemId={this.props.articles[0].id} />*/}
                 {/*<ArticleChart articles={ this.props.articles } />*/}

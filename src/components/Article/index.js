@@ -49,8 +49,8 @@ class Article extends PureComponent {
 
     handleDelete = () => {
         this.props.deleteArticle(this.props.article.id);
-        console.log(this.props.article.id)
-        console.log(deleteArticle(this.props.article.id))
+        // console.log(this.props.article.id)
+        // console.log(deleteArticl/e(this.props.article.id))
     };
 
     render() {

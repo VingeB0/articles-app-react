@@ -8,6 +8,6 @@ export default (articleState = articles, action) => {
             console.log('OLOLOL');
             return articleState.filter(article => article.id !== action.payload.id)
     }
-    console.log(articleState);
+    // console.log(articleState);
     return articleState;
 }

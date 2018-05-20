@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import DataRange from "./DataRange.js";
+import DateRange from "./DataRange.js";
 import SelectFilter from "./Select.js";
 
 class Filters extends Component {
@@ -11,8 +11,8 @@ class Filters extends Component {
     render() {
         return (
             <div>
-                <SelectFilter articles={this.props.articles}/>
-                <DataRange/>
+                <SelectFilter/>
+                <DateRange/>
             </div>
         );
     }

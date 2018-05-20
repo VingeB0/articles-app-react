@@ -1,41 +1,43 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import {connect} from 'react-redux';
+import {changeDateRange} from '../../actions';
+
 import DayPicker, {DateUtils} from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
-class DataRange extends Component {
-    constructor() {
-        super();
-        this.state = {
-            from: null,
-            to: null
-        }
-    }
+class DateRange extends Component {
 
     handleDayClick = (day) => {
-        this.setState(
-            DateUtils.addDayToRange(day, this.state)
-        );
+        this.props.changeDateRange(DateUtils.addDayToRange(day, this.props.range));
+        console.log(day)
+        console.log(this.props.range.from)
+        console.log(this.props.range.to)
     };
 
     render() {
-        const {from, to} = this.state;
-
+        console.log(this.props);
+        const {from, to} =  this.props.range;
         return (
-            <div>
+            <div className="data-range">
                 <DayPicker
-                    selectedDays={[from, {from, to}]}
+                    // ref="daypicker"
+                    // selectedDays={[from, {from, to}]}
+                    selectedDays={ day => DateUtils.isDayInRange(day, {from, to})}
                     onDayClick={this.handleDayClick}
                 />
-                <h2>
-                    {!from && !to && 'Please select the first day.'}
-                    {from && !to && 'Please select the last day.'}
-                    {from && to && `Selected from ${from.toLocaleDateString()} to ${to.toLocaleDateString()}.`}
-                </h2>
+                {/*<h2>*/}
+                {/*{!from && !to && 'Please select the first day.'}*/}
+                {/*{from && !to && 'Please select the last day.'}*/}
+                {/*{from && to && `Selected from ${from.toLocaleDateString()} to ${to.toLocaleDateString()}.`}*/}
+                {/*</h2>*/}
+                <h2>{from && to && `Selected from ${from.toLocaleDateString()} to ${to.toLocaleDateString()}`}</h2>
             </div>
         );
     }
 }
 
-export default DataRange;
+export default connect(state => ({
+    range: state.filters.dateRange
+}), {changeDateRange})(DateRange)
