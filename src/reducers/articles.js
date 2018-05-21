@@ -1,4 +1,4 @@
-import {fixtures as articles} from '../fixtures.js'
+import {normalizedArticles as articles} from '../fixtures.js'
 
 export default (articleState = articles, action) => {
     // const {type, payload} = action;
