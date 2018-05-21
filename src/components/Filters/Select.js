@@ -12,8 +12,8 @@ class SelectFilter extends Component {
 
     handleChange = (selected) => {
         this.props.changeSelection(selected.map(option => option.value));
-        console.log(selected)
-        console.log(selected.map(option => option.value))
+        // console.log(selected)
+        // console.log(selected.map(option => option.value))
     };
 
     render() {
