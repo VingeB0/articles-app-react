@@ -1,7 +1,8 @@
+import {increment} from '../actions'
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
-import {increment, decrement} from "../actions";
 
 class Counter extends Component {
     static propTypes = {

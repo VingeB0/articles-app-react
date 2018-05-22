@@ -1,17 +1,11 @@
 import {normalizedComments as comments} from '../fixtures.js'
+import {arrToMap} from '../utils'
 
-console.log(comments)
-
-const commentsMap = comments.reduce((acc, comment) => {
-    acc[comment.id] = comment
-    return acc
-}, {});
-
-console.log(commentsMap)
-
-export default (commentsState = commentsMap, action) => {
+export default (commentsState = arrToMap(comments), action) => {
     // const {type, payload} = action;
     switch (action.type) {
+        // case ADD_COMMENT:
+        // return {...commentsState, [randomId]: action.payload.comments}
     }
     // console.log(articleState);
     return commentsState;

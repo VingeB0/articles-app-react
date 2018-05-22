@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import {connect} from 'react-redux';
-import {changeSelection} from '../../actions';
+import {changeSelection} from '../../actions'
 
 class SelectFilter extends Component {
     static propTypes = {
