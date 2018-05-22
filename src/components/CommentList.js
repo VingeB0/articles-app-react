@@ -17,7 +17,7 @@ class CommentList extends Component {
         if (!isOpen) return null;
 
         const {comments} = this.props;
-        if (!comments.length) return <p>No comments yet</p>;
+        if (!comments) return <p>No comments yet</p>;
 
         return (
             <div>
@@ -27,6 +27,7 @@ class CommentList extends Component {
     }
 
     render() {
+        // console.log('32313123')
         const {isOpen, toggleOpen} = this.props;
 
         return (

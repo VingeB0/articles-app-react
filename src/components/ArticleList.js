@@ -17,7 +17,7 @@ class ArticleList extends Component {
 
     render() {
         const {articles} = this.props;
-        console.log(articles);
+        // console.log(articles);
         // console.log(this.state.articles.id === this.state.openArticleId)
         // console.log(this.state.articles);
         return (
@@ -36,7 +36,7 @@ class ArticleList extends Component {
     }
 }
 
-export default connect(state => {
+export default connect((state) => {
     return {
         articles: filtratedArticlesSelector(state)
     }
