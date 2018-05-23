@@ -32,7 +32,7 @@ class CommentList extends Component {
 
         return (
             <div>
-                <CommentForm/>
+                <CommentForm />
                 <ul>
                     <button onClick={toggleOpen}>{isOpen ? 'hide comments' : 'show comments'}</button>
                     {this.getBody()}

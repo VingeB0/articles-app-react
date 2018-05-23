@@ -40,3 +40,13 @@ export function changeSelection(selected) {
         }
     }
 }
+
+export function addComment(comment, articleId) {
+    return {
+        type: ADD_COMMENT,
+        payload: {
+            comment, articleId
+        },
+        generateId: true
+    }
+}
