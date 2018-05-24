@@ -23,7 +23,7 @@ class ArticleList extends Component {
         return (
             <ul>
                 {
-                    articles.map(article => <li key={article.id}>
+                    articles.map(article => <li key={article['id']}>
                         <Article
                             article={article}
                             isOpen={article.id === this.props.openItemId}

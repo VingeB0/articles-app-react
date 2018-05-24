@@ -8,8 +8,8 @@ const commentsGetter = state => state.comments;
 const idGetter = (state, props) => props.id;
 
 export const filtratedArticlesSelector = createSelector(articlesGetter, filtersGetter, (articles, filters) => {
-    // return mapToArr(articles).filter(article => {
-    return articles.filter(article => {
+    return mapToArr(articles).filter(article => {
+    // return articles.filter(article => {
         return (!filters.selected.length || filters.selected.includes(article.id)) &&
             (!filters.dateRange.to || !filters.dateRange.from || Date.parse(article.date) > filters.dateRange.from && Date.parse(article.date) < filters.dateRange.to)
     })

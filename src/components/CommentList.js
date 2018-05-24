@@ -3,6 +3,7 @@ import toggleOpen from '../decorators/toggleOpen.js'
 import Comment from "./Comment.js";
 import CommentForm from "./CommentForm";
 import PropTypes from "prop-types";
+import articles from "../reducers/articles";
 
 class CommentList extends Component {
     static propTypes = {
@@ -13,26 +14,24 @@ class CommentList extends Component {
     };
 
     getBody() {
-        const {isOpen} = this.props;
+        const {isOpen, article} = this.props;
         if (!isOpen) return null;
 
-        const {comments} = this.props;
-        if (!comments) return <p>No comments yet</p>;
+        if (!article.comments) return <p>No comments yet</p>;
 
         return (
             <div>
-                {comments.map(id => <li key={id}><Comment id={id}/></li>)}
+                {article.comments.map(id => <li key={id}><Comment id = {id}/></li>)}
             </div>
         )
     }
 
     render() {
-        // console.log('32313123')
-        const {isOpen, toggleOpen} = this.props;
+        const {isOpen, toggleOpen, article} = this.props;
 
         return (
             <div>
-                <CommentForm />
+                <CommentForm articleId = {article.id}/>
                 <ul>
                     <button onClick={toggleOpen}>{isOpen ? 'hide comments' : 'show comments'}</button>
                     {this.getBody()}

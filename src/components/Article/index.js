@@ -1,4 +1,4 @@
-import React, {Component, Fragment, PureComponent} from 'react';
+import React, {StrictMode, Component, Fragment, PureComponent} from 'react';
 import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
 import CommentList from '../CommentList.js'
@@ -26,7 +26,7 @@ class Article extends PureComponent {
         return (
             <section>
                 {article.text}
-                <CommentList comments = {article.comments} ref = {this.setCommentRef}/>
+                <CommentList article = {article} ref = {this.setCommentRef}/>
             </section>
         )
     }
@@ -54,11 +54,12 @@ class Article extends PureComponent {
     };
 
     render() {
-        // console.log('sozdavo');
+        console.log('sozdavo');
 
         const {article, isOpen, toggleOpen} = this.props;
 
         return (
+            //<StrictMode>
             <Fragment>
                 <div ref={this.setContainerRef}>
                     <h2>{article.title}</h2>
@@ -77,11 +78,17 @@ class Article extends PureComponent {
                     </div>
                 </div>
             </Fragment>
+            //</StrictMode>
         );
     }
 
     setContainerRef = ref => {
         this.container = ref;
+        // if (container) {
+            //perform som charting with d3
+        // } else {
+            //clean up
+        // }
         // console.log('___', ref)
         // console.log('___', ref.clientTop)
     };
