@@ -5,7 +5,8 @@ export default (Component) => class Accordion extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            openItemId : this.props.openItemId
+            openItemId : this.props.articles[0].id
+            // openItemId : this.props.openItemId
         }
     }
 
@@ -16,6 +17,7 @@ export default (Component) => class Accordion extends Component {
     };
 
     render() {
+        // console.log(this.props)
         return <Component {...this.props} toggleOpenItem={this.toggleOpenItem} openItemId={this.state.openItemId}/>
     }
 }

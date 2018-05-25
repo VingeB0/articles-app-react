@@ -17,7 +17,7 @@ class ArticleList extends Component {
 
     render() {
         const {articles} = this.props;
-        // console.log(articles);
+        // console.log(articles[0].id);
         // console.log(this.state.articles.id === this.state.openArticleId)
         // console.log(this.state.articles);
         return (

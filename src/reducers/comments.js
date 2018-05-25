@@ -3,10 +3,14 @@ import {arrToMap} from '../utils'
 import {ADD_COMMENT} from "../constants";
 
 export default (commentsState = arrToMap(comments), action) => {
-    // const {type, payload} = action;
-    switch (action.type) {
+    // console.log('reducer comment js')
+    // console.log(comments)
+    // console.log(action)
+    const {type, payload, randomId} = action;
+    switch (type) {
         case ADD_COMMENT:
-            return {...commentsState, [action.randomId]: action.payload.comments}
+            // console.log( {id: randomId, user: payload.comment.user, text: payload.comment.text} )
+            return {...commentsState, [randomId]: {id: randomId, user: payload.comment.user, text: payload.comment.text }}
     }
     // console.log(articleState);
     return commentsState;

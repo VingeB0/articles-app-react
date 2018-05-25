@@ -13,14 +13,16 @@ export default (articleState = arrToMap(articles), action) => {
 
             case ADD_COMMENT:
                 const article = articleState[payload.articleId];
+                console.log('-------')
+                console.log(articleState)
+                console.log(article)
                 return {
                     ...articleState,
                     [payload.articleId]: {
                         ...article,
-                        comments: (article.comments || [].concat(randomId))
+                        comments: (article.comments.concat(randomId) || [].concat(randomId))
+                    },
                 }
-            }
-
             // return articleState.filter(article => article.id !== action.payload.id)
     }
     return articleState;

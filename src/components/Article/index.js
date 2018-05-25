@@ -54,7 +54,7 @@ class Article extends PureComponent {
     };
 
     render() {
-        console.log('sozdavo');
+        // console.log('sozdavo');
 
         const {article, isOpen, toggleOpen} = this.props;
 

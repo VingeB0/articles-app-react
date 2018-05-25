@@ -7,8 +7,8 @@ import './styles.css'
 class CommentForm extends Component {
 
     state = {
-        user: '',
-        text: ''
+        user: 'dawdawdwa',
+        text: '31323231312312312312321312312312'
     };
 
     handleChange = type => ev => {
@@ -22,7 +22,8 @@ class CommentForm extends Component {
 
     handleSubmit = (ev) => {
         ev.preventDefault();
-        this.props.addComment(this.state, this.props.articleId);
+        this.props.addComment(this.state);
+        // console.log(this.state)
         this.setState({
             user: '',
             text: ''
@@ -30,8 +31,8 @@ class CommentForm extends Component {
     };
 
     render() {
-        console.log(this.props);
-        console.log(this.state);
+        // console.log(this.props);
+        // console.log(this.state);
 
         return (
             <form onSubmit={this.handleSubmit}>
@@ -76,4 +77,10 @@ const limits = {
     }
 };
 
-export default connect(null,{addComment})(CommentForm)
+export default connect(null, (dispatch, ownProps) => ({
+    addComment: (comment) => {
+        // console.log('ownProps')
+        // console.log(ownProps)
+        dispatch(addComment(comment, ownProps.articleId))
+    }
+}))(CommentForm)
