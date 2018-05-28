@@ -1,10 +1,10 @@
-import {Map} from 'immutable';
+import {Map, OrderedMap} from 'immutable';
 
 //convert array of objects to object of objects
 export function arrToMap(arr, DataRecord = Map) {
     return arr.reduce((acc, item) =>
         acc.set(item.id, new DataRecord(item))
-    , new Map({}))
+    , new OrderedMap({}))
 }
 // export function arrToMap(arr) {
 //     return arr.reduce((acc, item) => {

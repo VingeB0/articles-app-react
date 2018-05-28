@@ -1,14 +1,23 @@
+import {START, SUCCESS, FAIL} from "../constants";
+
 export default store => next => action => {
-    const {callAPI} = action;
+    const {callAPI, type, ...rest} = action;
     if (!callAPI) return next(action);
 
-    // setTimeout(()=> {
+    next({
+        ...rest, type: type + START
+    })
+
+    setTimeout(()=> {
         fetch(callAPI)
             .then(res => res.json())
             .then(response => {
+                console.log('rest')
+                console.log(rest)
                 console.log('response')
                 console.log(response)
-                next({...action, response})
+                next({...rest, type: type + SUCCESS, response})
             })
-    // }, 1000)
+            .catch(error => ({...rest, type: type + FAIL, error}))
+    }, 1000)
 }
