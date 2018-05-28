@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "immutable": "^3.8.2",
     "prop-types": "^15.6.1",
     "react": "^16.3.0",
     "react-day-picker": "^7.1.9",
