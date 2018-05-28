@@ -1,9 +1,9 @@
 export default store => next => action => {
-    const {callApi} = action;
-    if (!callApi) return next(action);
+    const {callAPI} = action;
+    if (!callAPI) return next(action);
 
     setTimeout(()=> {
-        fetch(callApi)
+        fetch(callAPI)
             .then(res => res.json())
             .then(response => {
                 console.log('response')

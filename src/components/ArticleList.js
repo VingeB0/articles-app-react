@@ -8,34 +8,33 @@ import {loadAllArticles} from "../actions";
 
 class ArticleList extends Component {
     static propTypes = {
+        //from connect
         articles: PropTypes.array.isRequired,
         //from accordion
-        openArticleId: PropTypes.string,
-        toggleOpenItem: PropTypes.func
-    };
+        openItemId: PropTypes.string,
+        toggleOpenItem: PropTypes.func.isRequired
+    }
 
     componentDidMount() {
-        this.props.loadAllArticles();
+        this.props.loadAllArticles()
     }
 
     render() {
-        // console.log(this.props)
-        const {articles} = this.props;
-        // console.log(this.state.articles.id === this.state.openArticleId)
-        // console.log(this.state.articles);
+        console.log('---', 'update article list')
+        const { articles, openItemId, toggleOpenItem } = this.props
+        const articleElements = articles.map(article => <li key={article.id}>
+            <Article
+                article = {article}
+                isOpen = {article.id === openItemId}
+                toggleOpen = {toggleOpenItem(article.id)}
+            />
+        </li>)
+
         return (
             <ul>
-                {
-                    articles.map(article => <li key={article['id']}>
-                        <Article
-                            article={article}
-                            isOpen={article.id === this.props.openItemId}
-                            toggleOpen={this.props.toggleOpenItem(article.id)}
-                        />
-                    </li>)
-                }
+                {articleElements}
             </ul>
-        );
+        )
     }
 }
 
@@ -43,5 +42,4 @@ export default connect((state) => {
     return {
         articles: filtratedArticlesSelector(state)
     }
-
-},{loadAllArticles})(accordion(ArticleList));
+}, {loadAllArticles})(accordion(ArticleList))
