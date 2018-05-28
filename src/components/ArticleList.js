@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-
 import Article from "./Article";
 import accordion from '../decorators/accordion.js'
 import PropTypes from "prop-types";
-
 import {connect} from 'react-redux'
 import {filtratedArticlesSelector} from '../selectors'
+import {loadAllArticles} from "../actions";
 
 class ArticleList extends Component {
     static propTypes = {
@@ -15,9 +14,13 @@ class ArticleList extends Component {
         toggleOpenItem: PropTypes.func
     };
 
+    componentDidMount() {
+        this.props.loadAllArticles();
+    }
+
     render() {
+        // console.log(this.props)
         const {articles} = this.props;
-        // console.log(articles[0].id);
         // console.log(this.state.articles.id === this.state.openArticleId)
         // console.log(this.state.articles);
         return (
@@ -41,4 +44,4 @@ export default connect((state) => {
         articles: filtratedArticlesSelector(state)
     }
 
-})(accordion(ArticleList));
+},{loadAllArticles})(accordion(ArticleList));

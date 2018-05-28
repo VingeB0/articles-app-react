@@ -1,5 +1,5 @@
 import {
-    INCREMENT, DECREMENT, DELETE_ARTICLE, CHANGE_DATE_RANGE, CHANGE_SELECTION, ADD_COMMENT
+    INCREMENT, DECREMENT, DELETE_ARTICLE, LOAD_ALL_ARTICLES, CHANGE_DATE_RANGE, CHANGE_SELECTION, ADD_COMMENT
 } from '../constants'
 
 export function increment() {
@@ -20,6 +20,14 @@ export function deleteArticle(id) {
         payload: {
             id
         }
+    }
+}
+
+export function loadAllArticles() {
+    return {
+        type: LOAD_ALL_ARTICLES,
+        callApi: 'http://localhost:3001/api/article'
+        // callApi: 'https://jsonplaceholder.typicode.com/posts/1'
     }
 }
 
