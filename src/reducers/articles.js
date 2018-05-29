@@ -1,12 +1,13 @@
 import {normalizedArticles as articles} from '../fixtures.js';
 import {arrToMap} from '../utils';
-import {DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES, START, SUCCESS} from "../constants";
+import {DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES, START, SUCCESS, LOAD_ARTICLE} from "../constants";
 import {Map, Record, OrderedMap} from 'immutable';
 
 const ArticleRecord = Record({
     text: undefined,
     title: '',
     id: undefined,
+    loading: false,
     comments: []
 });
 
@@ -47,11 +48,22 @@ export default (articleState = defaultState, action) => {
 
             // return articleState.filter(article => article.id !== action.payload.id)
             case LOAD_ALL_ARTICLES + SUCCESS:
+                // console.log('REDUSER SUCCESS');
+                // console.log(response)
+                // console.log(ArticleRecord)
+                // console.log(arrToMap(response, ArticleRecord).toJS())
                 return articleState
                     .set('entities', arrToMap(response, ArticleRecord))
                     .set('loading', false)
                     .set('loaded', true)
                 // return arrToMap(response, ArticleRecord)
+
+            case LOAD_ARTICLE + START:
+                return articleState.setIn(['entities', payload.id, 'loading'], true);
+
+            case LOAD_ARTICLE + SUCCESS:
+                return articleState.setIn(['entities', payload.id], new ArticleRecord(payload.response));
+
     }
     return articleState;
 }

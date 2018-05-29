@@ -22,8 +22,8 @@ class ArticleList extends Component {
     }
 
     render() {
-        console.log('---', 'update article list');
-        console.log(this.props.articles);
+        // console.log('---', 'update article list');
+        // console.log(this.props.articles);
         const { articles, openItemId, toggleOpenItem, loading} = this.props
         if (loading) return <Loader/>
         const articleElements = articles.map(article => <li key={article.id}>
@@ -43,10 +43,10 @@ class ArticleList extends Component {
 }
 
 export default connect((state) => {
-    console.log('state')
-    console.log(state.articles)
-    console.log('filtratedArticlesSelector(state)')
-    console.log(filtratedArticlesSelector(state))
+    // console.log('state')
+    // console.log(state.articles)
+    // console.log('filtratedArticlesSelector(state)')
+    // console.log(filtratedArticlesSelector(state))
     return {
         articles: filtratedArticlesSelector(state),
         loading: state.articles.loading,

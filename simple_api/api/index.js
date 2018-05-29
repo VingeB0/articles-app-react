@@ -2,17 +2,7 @@ var router = require('express').Router();
 var mocks = require('./mock');
 var assign = require('object-assign');
 
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', "*");
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-}
-
 router.get('/article', function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', "*");
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
     var articles = mocks.articles.map(function (article) {
             return assign({}, article, {
                 text: undefined
@@ -25,6 +15,9 @@ router.get('/article', function (req, res, next) {
 });
 
 router.get('/article/:id', function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
     var article = mocks.articles.filter(function (article) {
         return article.id == req.params.id
     })[0];

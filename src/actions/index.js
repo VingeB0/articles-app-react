@@ -1,5 +1,6 @@
-import {DELETE_ARTICLE, INCREMENT, CHANGE_DATE_RANGE, CHANGE_SELECTION, ADD_COMMENT,
-    LOAD_ALL_ARTICLES
+import {
+    DELETE_ARTICLE, INCREMENT, CHANGE_DATE_RANGE, CHANGE_SELECTION, ADD_COMMENT,
+    LOAD_ALL_ARTICLES, LOAD_ARTICLE, START, FAIL, SUCCESS
 } from '../constants'
 
 export function increment() {
@@ -11,28 +12,28 @@ export function increment() {
 export function deleteArticle(id) {
     return {
         type: DELETE_ARTICLE,
-        payload: { id }
+        payload: {id}
     }
 }
 
 export function changeDateRange(dateRange) {
     return {
         type: CHANGE_DATE_RANGE,
-        payload: { dateRange }
+        payload: {dateRange}
     }
 }
 
 export function changeSelection(selected) {
     return {
         type: CHANGE_SELECTION,
-        payload: { selected }
+        payload: {selected}
     }
 }
 
 export function addComment(comment, articleId) {
     return {
         type: ADD_COMMENT,
-        payload: { comment, articleId },
+        payload: {comment, articleId},
         generateId: true
     }
 }
@@ -40,6 +41,37 @@ export function addComment(comment, articleId) {
 export function loadAllArticles() {
     return {
         type: LOAD_ALL_ARTICLES,
-        callAPI: '/api/article'
+        callAPI: 'http://localhost:3001/api/article'
     }
 }
+
+
+export function loadArticle(id) {
+    return (dispatch) => {
+        dispatch({
+            type: LOAD_ARTICLE + START,
+            payload: {id}
+        });
+
+        setTimeout(() => {
+            fetch(`http://localhost:3001/api/article/${id}`)
+                .then(res => res.json())
+                .then(response => dispatch({
+                    type: LOAD_ARTICLE + SUCCESS,
+                    payload: {id, response}
+                }))
+                .catch(error => dispatch({
+                    type: LOAD_ARTICLE + FAIL,
+                    payload: {id, error}
+                }))
+        }, 1000)
+    }
+}
+
+//
+// export function loadArticle() {
+//     return {
+//         type: LOAD_ARTICLE,
+//         callAPI: '/api/article/${id}'
+//     }
+// }
