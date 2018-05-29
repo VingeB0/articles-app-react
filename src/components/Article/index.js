@@ -21,6 +21,20 @@ class Article extends PureComponent {
         toggleOpen: PropTypes.func
     };
 
+    // static getDerivedStateFromProps(props, state) {
+    //     const {article, isOpen} = props;
+    //     console.log('getDerivedStateFromProps');
+    //     if (isOpen && !article.text && !article.loading) return loadArticle(article.id)
+    // }
+
+    componentWillReceiveProps({isOpen, loadArticle, article}) {
+        if (isOpen && !article.text && !article.loading) loadArticle(article.id)
+    }
+
+    // componentWillReceiveProps(nextProps) {
+    //     // console.log('___', 'updating', this.props.isOpen, nextProps.isOpen)
+    // }
+
     getBody() {
         const {article, isOpen} = this.props;
         if (!isOpen) return null;
@@ -32,14 +46,6 @@ class Article extends PureComponent {
             </section>
         )
     }
-
-    componentWillReceiveProps({isOpen, loadArticle, article}) {
-        if (isOpen && !article.text && !article.loading) loadArticle(article.id)
-    }
-
-    // componentWillReceiveProps(nextProps) {
-    //     // console.log('___', 'updating', this.props.isOpen, nextProps.isOpen)
-    // }
 
     componentWillMount() {
         // console.log('___', 'mounting');
