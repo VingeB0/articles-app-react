@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ArticleList from "./ArticleList.js";
+import Articles from "../routes/Articles.js";
 import ArticleChart from "./ArticleChart.js";
 import UserForm from "./UserForm.js";
 import Filters from './Filters'
@@ -33,7 +34,7 @@ class App extends Component {
                     <UserForm/>
                     <Route path ="/counter" component = {Counter}/>
                     <Route path ="/filters" component = {Filters}/>
-                    <Route path ="/articles" component = {ArticleList}/>
+                    <Route path ="/articles" component = {Articles}/>
                     {/*<ArticleList openItemId={this.props.articles[0].id} />*/}
                     {/*<ArticleChart articles={ this.props.articles } />*/}
                 </div>

@@ -7,13 +7,15 @@ import {filtratedArticlesSelector} from '../selectors'
 import {loadAllArticles} from "../actionCreators";
 import Loader from './loader.js';
 
+import {NavLink} from 'react-router-dom';
+
 class ArticleList extends Component {
     static propTypes = {
         //from connect
         articles: PropTypes.array.isRequired,
         //from accordion
         openItemId: PropTypes.string,
-        toggleOpenItem: PropTypes.func.isRequired
+        toggleOpenItem: PropTypes.func
     }
 
     componentDidMount() {
@@ -24,14 +26,15 @@ class ArticleList extends Component {
     render() {
         // console.log('---', 'update article list');
         // console.log(this.props.articles);
-        const { articles, openItemId, toggleOpenItem, loading} = this.props
+        const { articles, loading} = this.props
         if (loading) return <Loader/>
         const articleElements = articles.map(article => <li key={article.id}>
-            <Article
-                article = {article}
-                isOpen = {article.id === openItemId}
-                toggleOpen = {toggleOpenItem(article.id)}
-            />
+            <NavLink
+                to = {`/articles/${article.id}`}
+                activeStyle = {{color: 'red'}}
+            >
+                {article.title}
+            </NavLink>
         </li>)
 
         return (
@@ -52,4 +55,4 @@ export default connect((state) => {
         loading: state.articles.loading,
         loaded: state.articles.loaded,
     }
-}, {loadAllArticles})(accordion(ArticleList))
+}, {loadAllArticles})(ArticleList)
