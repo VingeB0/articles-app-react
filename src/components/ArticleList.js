@@ -4,7 +4,7 @@ import accordion from '../decorators/accordion.js'
 import PropTypes from "prop-types";
 import {connect} from 'react-redux'
 import {filtratedArticlesSelector} from '../selectors'
-import {loadAllArticles} from "../actions";
+import {loadAllArticles} from "../actionCreators";
 import Loader from './loader.js';
 
 class ArticleList extends Component {

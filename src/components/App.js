@@ -4,6 +4,7 @@ import ArticleList from "./ArticleList.js";
 import ArticleChart from "./ArticleChart.js";
 import UserForm from "./UserForm.js";
 import Filters from './Filters'
+import {HashRouter as Router, Route} from 'react-router-dom'
 
 import Counter from './Counter.js'
 
@@ -14,14 +15,17 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <Counter/>
-                <UserForm/>
-                <Filters/>
-                <ArticleList/>
-                {/*<ArticleList openItemId={this.props.articles[0].id} />*/}
-                {/*<ArticleChart articles={ this.props.articles } />*/}
-            </div>
+            <Router>
+                <div>
+                    <UserForm/>
+                    <Route path ="/counter" component = "{Counter}"/>
+                    <Route path ="/filters" component = "{Filters}"/>
+                    <Route path ="/articles" component = "{ArticleList}"/>
+                    <ArticleList/>
+                    {/*<ArticleList openItemId={this.props.articles[0].id} />*/}
+                    {/*<ArticleChart articles={ this.props.articles } />*/}
+                </div>
+            </Router>
         );
     }
 }

@@ -5,7 +5,7 @@ import CommentList from '../CommentList.js'
 import '../article.css';
 
 import {connect} from 'react-redux';
-import {deleteArticle, loadArticle} from '../../actions';
+import {deleteArticle, loadArticle} from '../../actionCreators';
 
 import {CSSTransitionGroup} from 'react-transition-group'
 import Loader from '../loader.js'

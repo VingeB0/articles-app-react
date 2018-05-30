@@ -3,6 +3,9 @@ var mocks = require('./mock');
 var assign = require('object-assign');
 
 router.get('/article', function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
     var articles = mocks.articles.map(function (article) {
             return assign({}, article, {
                 text: undefined
@@ -39,6 +42,9 @@ router.post('/article', function (req, res, next) {
 });
 
 router.get('/comment', function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
     var aid = req.query.article;
     if (aid) {
         var article = mocks.articles.find(function(article) {
@@ -60,6 +66,9 @@ router.get('/comment', function (req, res, next) {
 });
 
 router.post('/comment', function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
     var comment = {
         id : Date.now().toString(),
         text : req.body.text,

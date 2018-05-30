@@ -1,4 +1,4 @@
-import {increment} from '../actions'
+import {increment} from '../actionCreators'
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
