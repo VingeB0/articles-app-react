@@ -12,13 +12,15 @@ import Loader from '../loader.js'
 
 class Article extends PureComponent {
     static propTypes = {
-        article: PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired,
-            text: PropTypes.string
-        }).isRequired,
+        id: PropTypes.string,
         isOpen: PropTypes.bool,
-        toggleOpen: PropTypes.func
+        toggleOpen: PropTypes.func,
+        //from connect
+        article: PropTypes.shape({
+            id: PropTypes.string,
+            title: PropTypes.string,
+            text: PropTypes.string
+        })
     };
 
     // static getDerivedStateFromProps(props, state) {
@@ -27,8 +29,9 @@ class Article extends PureComponent {
     //     if (isOpen && !article.text && !article.loading) return loadArticle(article.id)
     // }
 
-    componentWillReceiveProps({isOpen, loadArticle, article}) {
-        if (isOpen && !article.text && !article.loading) loadArticle(article.id)
+    componentDidMount() {
+        const {loadArticle, article, id} = this.props
+        if (!article  || (!article.text && !article.loading)) loadArticle(id)
     }
 
     // componentWillReceiveProps(nextProps) {
@@ -66,10 +69,10 @@ class Article extends PureComponent {
     };
 
     render() {
-        // console.log('sozdavo');
-
+        console.log('IS OPEN')
+        console.log(this.props.isOpen);
         const {article, isOpen, toggleOpen} = this.props;
-
+        if(!article) return null;
         return (
             //<StrictMode>
             <Fragment>
@@ -110,10 +113,15 @@ class Article extends PureComponent {
         // console.log('___findNode', findDOMNode(ref))
     };
 
-    componentDidMount(nextProps, nextState) {
+    // componentDidMount(nextProps, nextState) {
         // console.log('___', 'mounted')
-    }
+    // }
 
 }
 
-export default connect(null, {deleteArticle, loadArticle})(Article);
+export default connect((state, ownProps) => ({
+    article: state.articles.entities.get(ownProps.id)
+    // console.log('GET OWN PROPS')
+    // console.log(ownProps)
+    // console.log(state.articles.entities.get(ownProps.id))
+}), {deleteArticle, loadArticle})(Article);

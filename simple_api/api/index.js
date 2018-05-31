@@ -22,7 +22,7 @@ router.get('/article/:id', function (req, res, next) {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     var article = mocks.articles.filter(function (article) {
-        return article.id == req.params.id
+        return article.id === req.params.id
     })[0];
     if (article) return res.json(article);
 
@@ -30,6 +30,9 @@ router.get('/article/:id', function (req, res, next) {
 });
 
 router.post('/article', function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
     var body = req.body;
     var article = {
         text: body.text,
@@ -48,11 +51,11 @@ router.get('/comment', function (req, res, next) {
     var aid = req.query.article;
     if (aid) {
         var article = mocks.articles.find(function(article) {
-            return article.id == aid
+            return article.id === aid
         })
         return res.json((article.comments || []).map(function(id) {
             return mocks.comments.find(function(comment) {
-                return comment.id == id
+                return comment.id === id
             })
         }))
     }

@@ -7,7 +7,7 @@ import {filtratedArticlesSelector} from '../selectors'
 import {loadAllArticles} from "../actionCreators";
 import Loader from './loader.js';
 
-import {NavLink} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 
 class ArticleList extends Component {
     static propTypes = {

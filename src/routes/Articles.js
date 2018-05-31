@@ -12,18 +12,22 @@ class Articles extends Component {
         return (
             <div>
                 <ArticleList/>
+                <Route path="/articles/" render={this.getIndex} exact />
                 <Route path="/articles/:id" render={this.getArticle}/>
             </div>
         )
     }
 
-    // getArticle = ({match}) => {
-    getArticle = (...rest) => {
-        console.log('----ARTICLE ROUTE----')
-        // console.log(match.params.id)
-        console.log(rest)
-        return <h1>Article id</h1>
+    getArticle = ({match}) => {
+        const { id } = match.params;
+    // getArticle = (...rest) => {
+        // console.log(rest)
         // return <h1>Article id: {match.params.id}</h1>
+        return <Article id = {id} isOpen key = {id} />
+    }
+
+    getIndex = () => {
+        return <h2>Please select article</h2>
     }
 }
 

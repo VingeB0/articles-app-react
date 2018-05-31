@@ -4,7 +4,7 @@ import {DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES, START, SUCCESS, LOAD_ART
 import {Map, Record, OrderedMap} from 'immutable';
 
 const ArticleRecord = Record({
-    text: undefined,
+    text: null,
     title: '',
     id: undefined,
     loading: false,
