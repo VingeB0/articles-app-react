@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ArticleList from '../components/ArticleList.js';
 import Article from '../components/Article/index.js';
 import {Route} from 'react-router-dom';
+import NotFound from "./NotFound";
 
 class Articles extends Component {
     static propTypes = {
@@ -12,7 +13,7 @@ class Articles extends Component {
         return (
             <div>
                 <ArticleList/>
-                <Route path="/articles" render={this.getIndex} exact />
+                <Route path="/articles" children={this.getIndex} exact />
                 <Route path="/articles/:id" render={this.getArticle}/>
             </div>
         )
@@ -26,7 +27,8 @@ class Articles extends Component {
         return <Article id = {id} isOpen key = {id} />
     }
 
-    getIndex = () => {
+    getIndex = ({match}) => {
+        if (!match) return <h2>Article Page:</h2>;
         return <h2>Please select article</h2>
     }
 }
