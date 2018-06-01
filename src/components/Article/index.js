@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import {deleteArticle, loadArticle} from '../../actionCreators';
 
 import {CSSTransitionGroup} from 'react-transition-group'
-import Loader from '../loader.js'
+import Loader from '../Loader.js'
 
 class Article extends PureComponent {
     static propTypes = {
@@ -69,8 +69,8 @@ class Article extends PureComponent {
     };
 
     render() {
-        console.log('IS OPEN')
-        console.log(this.props.isOpen);
+        // console.log('IS OPEN')
+        // console.log(this.props.isOpen);
         const {article, isOpen, toggleOpen} = this.props;
         if(!article) return null;
         return (

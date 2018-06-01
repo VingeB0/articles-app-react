@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 import articles from "../reducers/articles";
 import {loadArticleComments} from "../actionCreators";
 import comments from "../reducers/comments";
-import Loader from "./loader";
+import Loader from "./Loader";
 
 class CommentList extends Component {
     static propTypes = {
@@ -37,8 +37,8 @@ class CommentList extends Component {
     }
 
     getBody() {
-        console.log('---this.props---')
-        console.log(this.props.article)
+        // console.log('---this.props---')
+        // console.log(this.props.article)
         const {isOpen, article} = this.props;
         if (!isOpen) return null;
         if (article.commentsLoading) return <Loader/>;

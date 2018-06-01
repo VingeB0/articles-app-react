@@ -4,6 +4,7 @@ import ArticleList from "./ArticleList.js";
 import Articles from "../routes/Articles.js";
 import NewArticle from "../routes/NewArticle.js";
 import NotFound from "../routes/NotFound.js";
+import CommentsPage from "../routes/CommentsPage.js";
 import ArticleChart from "./ArticleChart.js";
 import UserForm from "./UserForm.js";
 import Filters from './Filters'
@@ -38,6 +39,7 @@ class App extends Component {
                         <Route path ="/filters" component = {Filters}/>
                         <Route path ="/articles/new" component = {NewArticle}/>
                         <Route path ="/articles" component = {Articles}/>
+                        <Route path ="/comments/:page" component = {CommentsPage}/>
                         <Route path ="*" component = {NotFound}/>
                     </Switch>
                     {/*<ArticleList openItemId={this.props.articles[0].id} />*/}

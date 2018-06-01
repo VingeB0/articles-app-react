@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import {connect} from 'react-redux'
 import {filtratedArticlesSelector} from '../selectors'
 import {loadAllArticles} from "../actionCreators";
-import Loader from './loader.js';
+import Loader from './Loader.js';
 
 import {NavLink, Link} from 'react-router-dom';
 
