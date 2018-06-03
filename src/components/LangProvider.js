@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import dictionaries from '../dictionaries'
+import dictionaries from './dictionaries'
 
 class LangProvider extends Component {
     static propTypes = {
