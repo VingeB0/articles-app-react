@@ -8,7 +8,7 @@ import CommentsPage from "../routes/CommentsPage.js";
 import ArticleChart from "./ArticleChart.js";
 import UserForm from "./UserForm.js";
 import Filters from './Filters'
-import {BrowserRouter as Router, Route, Link, NavLink, HashRouter, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Link, NavLink, HashRouter, Switch, Redirect} from 'react-router-dom'
 
 import Counter from './Counter.js'
 
@@ -32,6 +32,9 @@ class App extends Component {
                         <div>
                             <NavLink activeStyle={{color: 'red'}} to="/articles">Articles</NavLink>
                         </div>
+                        <div>
+                            <NavLink activeStyle={{color: 'red'}} to="/comments/1">Comments pagination</NavLink>
+                        </div>
                     </div>
                     <UserForm/>
                     <Switch>
@@ -39,7 +42,9 @@ class App extends Component {
                         <Route path ="/filters" component = {Filters}/>
                         <Route path ="/articles/new" component = {NewArticle}/>
                         <Route path ="/articles" component = {Articles}/>
-                        <Route path ="/comments/:page" component = {CommentsPage}/>
+                        {/*<Route path ="/comments/:page" component = {CommentsPage}/>*/}
+                        <Route path ="/comments/" component = {CommentsPage}/>
+                        <Redirect from = '/comments/' to = '/comments/1' />
                         <Route path ="*" component = {NotFound}/>
                     </Switch>
                     {/*<ArticleList openItemId={this.props.articles[0].id} />*/}
