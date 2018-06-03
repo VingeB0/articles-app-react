@@ -8,8 +8,9 @@ import CommentsPage from "../routes/CommentsPage.js";
 import ArticleChart from "./ArticleChart.js";
 import UserForm from "./UserForm.js";
 import Filters from './Filters'
-import {BrowserRouter as Router, Route, Link, NavLink, HashRouter, Switch, Redirect} from 'react-router-dom'
-
+import {BrowserRouter, Router, Route, Link, NavLink, HashRouter, Switch, Redirect} from 'react-router-dom'
+import history from '../history'
+import {ConnectedRouter} from 'react-router-redux'
 import Counter from './Counter.js'
 
 class App extends Component {
@@ -19,7 +20,7 @@ class App extends Component {
 
     render() {
         return (
-            <Router>
+            <ConnectedRouter history = {history}>
                 <div>
                     <div>
                         <h4>Main menu</h4>
@@ -50,7 +51,7 @@ class App extends Component {
                     {/*<ArticleList openItemId={this.props.articles[0].id} />*/}
                     {/*<ArticleChart articles={ this.props.articles } />*/}
                 </div>
-            </Router>
+            </ConnectedRouter>
         );
     }
 }

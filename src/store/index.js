@@ -5,9 +5,12 @@ import logger from '../middlewares/logger.js'
 import randomId from "../middlewares/randomId.js";
 import api from "../middlewares/api.js";
 import thunk from 'redux-thunk';
+import {routerMiddleware} from 'react-router-redux'
+import history from '../history'
 
 const enhancer = applyMiddleware(
     thunk,
+    routerMiddleware(history),
     randomId,
     api,
     logger
