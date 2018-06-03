@@ -3,6 +3,7 @@ import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
 import CommentList from '../CommentList.js'
 import '../article.css';
+import LocalizedText from '../LocalizedText'
 
 import {connect} from 'react-redux';
 import {deleteArticle, loadArticle} from '../../actionCreators';
@@ -80,7 +81,7 @@ class Article extends Component {
                 <div ref={this.setContainerRef}>
                     <h2>{article.title}</h2>
                     <button onClick={toggleOpen}> { isOpen ? 'Open' : 'Close' } </button>
-                    <button onClick={this.handleDelete}>delete</button>
+                    <button onClick = {this.handleDelete}><LocalizedText>delete me</LocalizedText></button>
                     <div>
                         <CSSTransitionGroup
                             transitionName="article"

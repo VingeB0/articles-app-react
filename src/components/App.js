@@ -12,6 +12,7 @@ import {BrowserRouter, Router, Route, Link, NavLink, HashRouter, Switch, Redirec
 import history from '../history'
 import {ConnectedRouter} from 'react-router-redux'
 import Counter from './Counter.js'
+import LangProvider from './LangProvider'
 
 class App extends Component {
 
@@ -26,16 +27,23 @@ class App extends Component {
     }
 
     state = {
-        username: ''
+        username: '',
+        language: 'ru'
     }
+
+    changeLanguage = language => ev => this.setState({ language })
 
     handleUserChange = (username) => this.setState({ username })
 
     render() {
         return (
             <ConnectedRouter history = {history}>
-                <div>
+                <LangProvider language = {this.state.language}>
                     <div>
+                        <ul>
+                            <li onClick = {this.changeLanguage('en')}>English</li>
+                            <li onClick = {this.changeLanguage('ru')}>Russian</li>
+                        </ul>
                         <h4>Main menu</h4>
                         <div>
                             <NavLink activeStyle={{color: 'red'}} to="/counter">Counter</NavLink>
@@ -63,7 +71,7 @@ class App extends Component {
                     </Switch>
                     {/*<ArticleList openItemId={this.props.articles[0].id} />*/}
                     {/*<ArticleChart articles={ this.props.articles } />*/}
-                </div>
+                </LangProvider>
             </ConnectedRouter>
         );
     }

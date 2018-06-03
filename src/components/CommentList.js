@@ -8,6 +8,7 @@ import articles from "../reducers/articles";
 import {loadArticleComments} from "../actionCreators";
 import comments from "../reducers/comments";
 import Loader from "./Loader";
+import LocalizedText from './LocalizedText'
 
 class CommentList extends Component {
     static contextTypes = {
@@ -53,7 +54,7 @@ class CommentList extends Component {
 
         if (!article.comments.length) return (
             <div>
-                <p>No comments yet</p>
+                <p><LocalizedText>No comments yet</LocalizedText></p>
                 <CommentForm articleId = {article.id} />
             </div>
         );
