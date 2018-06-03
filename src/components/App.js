@@ -14,9 +14,22 @@ import {ConnectedRouter} from 'react-router-redux'
 import Counter from './Counter.js'
 
 class App extends Component {
-    static propTypes = {
 
-    };
+    static childContextTypes = {
+        user: PropTypes.string
+    }
+
+    getChildContext() {
+        return {
+            user: this.state.username
+        }
+    }
+
+    state = {
+        username: ''
+    }
+
+    handleUserChange = (username) => this.setState({ username })
 
     render() {
         return (
@@ -37,7 +50,7 @@ class App extends Component {
                             <NavLink activeStyle={{color: 'red'}} to="/comments/1">Comments pagination</NavLink>
                         </div>
                     </div>
-                    <UserForm/>
+                    <UserForm value = {this.state.username} onChange = {this.handleUserChange}/>
                     <Switch>
                         <Route path ="/counter" component = {Counter}/>
                         <Route path ="/filters" component = {Filters}/>

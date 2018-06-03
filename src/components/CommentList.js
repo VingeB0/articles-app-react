@@ -10,6 +10,12 @@ import comments from "../reducers/comments";
 import Loader from "./Loader";
 
 class CommentList extends Component {
+    static contextTypes = {
+        store: PropTypes.object,
+        router: PropTypes.object,
+        user: PropTypes.string
+    }
+
     static propTypes = {
         comments: PropTypes.array,
         //from toggleOpen decorator
@@ -25,10 +31,11 @@ class CommentList extends Component {
 
     render() {
         const {isOpen, toggleOpen, article} = this.props;
-
+        console.log('---', 3, this.context)
         return (
             <div>
                 <ul>
+                    <h3>User: {this.context.user}</h3>
                     <button onClick={toggleOpen}>{isOpen ? 'hide comments' : 'show comments'}</button>
                     {this.getBody()}
                 </ul>
@@ -62,4 +69,4 @@ class CommentList extends Component {
     }
 }
 
-export default connect(null, {loadArticleComments})(toggleOpen(CommentList));
+export default connect(null, {loadArticleComments}, null, {pure: false})(toggleOpen(CommentList));

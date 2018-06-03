@@ -10,7 +10,8 @@ import {deleteArticle, loadArticle} from '../../actionCreators';
 import {CSSTransitionGroup} from 'react-transition-group'
 import Loader from '../Loader.js'
 
-class Article extends PureComponent {
+// class Article extends PureComponent {
+class Article extends Component {
     static propTypes = {
         id: PropTypes.string,
         isOpen: PropTypes.bool,
@@ -121,7 +122,9 @@ class Article extends PureComponent {
 
 export default connect((state, ownProps) => ({
     article: state.articles.entities.get(ownProps.id)
-    // console.log('GET OWN PROPS')
-    // console.log(ownProps)
-    // console.log(state.articles.entities.get(ownProps.id))
-}), {deleteArticle, loadArticle})(Article);
+}),
+    {deleteArticle, loadArticle},
+    null,
+    //merge props
+    { pure: false }
+)(Article);
